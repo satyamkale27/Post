@@ -2,7 +2,7 @@ const posts = [
   {
     id: 134679,
     Image: "resources/profile_Image.jpg",
-    tittle: "sunset Views",
+    name: "satyam",
     content: "The most beautiful sunset I've ever seen.",
     hashtag: "#nature #beauty",
   },
@@ -28,13 +28,21 @@ function Post({ datas }) {
   return (
     <div>
       <div>
-        <img src={datas.Image} alt={datas.tittle} />
+        <img
+          className="rounded-full h-12 w-12"
+          src={datas.Image}
+          alt={datas.name}
+        />
       </div>
       <div>
-        <tittle>{datas.tittle}</tittle>
+        <tittle>{datas.name}</tittle>
       </div>
-      <div></div>
-      <div></div>
+      <div>
+        <h2>{datas.content}</h2>
+      </div>
+      <div>
+        <h3 className="text-blue-600">{datas.hashtag}</h3>
+      </div>
     </div>
   );
 }
