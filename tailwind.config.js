@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/App.js"],
   theme: {
-    extend: {},
+    extend: {
+      width: {
+        custom: "650px", // Define your custom width here
+      },
+    },
   },
   plugins: [],
 };
