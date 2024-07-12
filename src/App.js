@@ -9,10 +9,12 @@ const posts = [
       "https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
+function Butoon
+
 export default function App() {
   const postData = posts;
   return (
-    <div>
+    <div className="relative top-24 left-1/4">
       <Postlist data={postData} />
     </div>
   );
@@ -28,7 +30,7 @@ function Postlist({ data }) {
 }
 function Post({ datas }) {
   return (
-    <div>
+    <div className="relative">
       <div className="flex">
         <img
           className="rounded-full h-12 w-12"
@@ -44,7 +46,7 @@ function Post({ datas }) {
         <div>
           <h2>{datas.content}</h2>
         </div>
-        <div>
+        <div className="relative bottom-1">
           <h3 className="text-blue-600 ">{datas.hashtag}</h3>
         </div>
 
@@ -58,4 +60,8 @@ function Post({ datas }) {
       </div>
     </div>
   );
+}
+
+function Createpost(){
+
 }
