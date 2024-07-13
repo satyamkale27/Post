@@ -52,6 +52,15 @@ function Postlist({ data }) {
 function Post({ datas }) {
   return (
     <div className="h-full w-custom border-2 border-solid ml-96 mb-2">
+      <div className="flex justify-end m-1">
+        <div className="mr-1">
+          <Button>Edit</Button>
+        </div>
+        <div className="">
+          <Button>Delete</Button>
+        </div>
+      </div>
+
       <div className="relative mb-72  flex flex-col items-center ">
         <div className="flex relative right-52 ">
           <img
