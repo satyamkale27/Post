@@ -37,6 +37,9 @@ export default function App() {
       <div className="flex  justify-center">
         <Createpost />
       </div>
+      <div className="flex justify-center mt-3 h-60">
+        <Postdata />
+      </div>
     </div>
   );
 }
@@ -51,7 +54,7 @@ function Postlist({ data }) {
 }
 function Post({ datas }) {
   return (
-    <div className="h-full w-custom border-2 border-solid ml-96 mb-2">
+    <div className="h-full w-custom border-4 border-solid  ml-96 mb-2 bg-peach ">
       <div className="flex justify-end m-1">
         <div className="mr-1">
           <Button>Edit</Button>
@@ -98,6 +101,25 @@ function Createpost() {
   return (
     <div>
       <Button>create post</Button>
+    </div>
+  );
+}
+function Postdata() {
+  return (
+    <div className="w-1/4 border-4 bg-peach">
+      <form className="p-6 grid grid-cols-2 mb-6 gap-1 ">
+        <label className="font-bold">name</label>
+        <input className="border-2 border-blue-600 w-10/12" type="text" />
+        <label className="font-bold">content</label>
+        <input className="border-2 border-blue-600 w-10/12" type="text" />
+        <label className="font-bold">Hashtag</label>
+        <input className="border-2 border-blue-600 w-10/12" type="text" />
+        <label className="font-bold">Image</label>
+        <input className="border-2 border-blue-600 w-10/12" type="text" />
+        <div className="mt-4 ml-24">
+          <Button>Create</Button>
+        </div>
+      </form>
     </div>
   );
 }

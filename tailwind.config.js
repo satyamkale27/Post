@@ -6,6 +6,9 @@ module.exports = {
       width: {
         custom: "650px", // Define your custom width here
       },
+      colors: {
+        peach: "#FFE8CC",
+      },
     },
   },
   plugins: [],
