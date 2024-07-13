@@ -34,12 +34,14 @@ export default function App() {
   return (
     <div>
       <Postlist data={postData} />
+
       <div className="flex  justify-center">
         <Createpost />
       </div>
       <div className="flex justify-center mt-3 h-60">
         <Postdata />
       </div>
+      <Editpost />
     </div>
   );
 }
@@ -118,6 +120,19 @@ function Postdata() {
         <input className="border-2 border-blue-600 w-10/12" type="text" />
         <div className="mt-4 ml-24">
           <Button>Create</Button>
+        </div>
+      </form>
+    </div>
+  );
+}
+function Editpost() {
+  return (
+    <div className="w-1/4 border-4 bg-peach absolute top-1/2 right-2">
+      <form className="p-6 grid grid-cols-2 mb-6 gap-1 ">
+        <label className="font-bold">content</label>
+        <input className="border-2 border-blue-600 w-40" type="text" />
+        <div className="mt-4 ml-24">
+          <Button>Edit</Button>
         </div>
       </form>
     </div>
