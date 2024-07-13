@@ -21,7 +21,7 @@ const posts = [
 function Button({ children, onClick }) {
   return (
     <button
-      className="bg-yellow-500 text-gray-800 py-3 px-4 border-0 rounded-md font-bold cursor-pointer"
+      className="bg-yellow-500 text-gray-800 py-3 px-4 border-0 rounded-md font-bold cursor-pointer transition duration-300 hover:bg-yellow-600"
       onClick={onClick}
     >
       {children}
