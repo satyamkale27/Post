@@ -123,7 +123,15 @@ function Postdata() {
   const [content, setContent] = useState("");
   const [hashtag, setHashtag] = useState("");
   const [image, setImage] = useState("");
-
+  const id = crypto.randomUUID();
+  const newPost = {
+    id,
+    name,
+    content,
+    hashtag,
+    image,
+  };
+  console.log(newPost);
   return (
     <div className="w-1/4 border-4 bg-peach">
       <form className="p-6 grid grid-cols-2 mb-6 gap-1 ">
