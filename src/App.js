@@ -31,11 +31,15 @@ function Button({ children, onClick }) {
 }
 
 export default function App() {
-  const postData = posts;
   const [showCreatePost, setshowCreatePost] = useState(false);
+  const [postData, setpostData] = useState(posts);
 
   function handelshowCreatePost() {
     setshowCreatePost((show) => !show);
+  }
+
+  function handelCreatePost(newPost) {
+    setpostData((postData) => [...postData, newPost]);
   }
 
   return (
@@ -49,7 +53,7 @@ export default function App() {
         />
       </div>
       <div className="flex justify-center mt-3 h-60">
-        {showCreatePost && <Postdata />}
+        {showCreatePost && <Postdata onNewPost={handelCreatePost} />}
       </div>
       <Editpost />
     </div>
@@ -118,24 +122,29 @@ function Createpost({ handelshowCreatePost, showCreatePost }) {
     </div>
   );
 }
-function Postdata() {
+function Postdata({ onNewPost }) {
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
   const [hashtag, setHashtag] = useState("");
-  const [image, setImage] = useState("");
+  const [insertimg, setinsertimg] = useState("");
 
   function handelsubmitpost(e) {
     e.preventDefault();
     const id = crypto.randomUUID();
-    if (!name || !content || !hashtag || !image) return;
+    if (!name || !content || !hashtag || !insertimg) return;
     const newPost = {
       id,
+      Image: "resources/profile_Image.jpg",
       name,
       content,
       hashtag,
-      image,
+      insertimg,
     };
-    console.log(newPost);
+    onNewPost(newPost);
+    setContent("");
+    setHashtag("");
+    setName("");
+    setinsertimg("");
   }
 
   return (
@@ -166,8 +175,8 @@ function Postdata() {
         <input
           className="border-2 border-blue-600 w-10/12"
           type="text"
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
+          value={insertimg}
+          onChange={(e) => setinsertimg(e.target.value)}
         />
         <div className="mt-4 ml-24">
           <Button onClick={handelsubmitpost}>Create</Button>
