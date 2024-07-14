@@ -40,6 +40,7 @@ export default function App() {
 
   function handelCreatePost(newPost) {
     setpostData((postData) => [...postData, newPost]);
+    setshowCreatePost(false);
   }
 
   return (
