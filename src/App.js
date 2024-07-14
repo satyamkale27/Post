@@ -1,3 +1,4 @@
+import { useState } from "react";
 const posts = [
   {
     id: 134679,
@@ -31,15 +32,21 @@ function Button({ children, onClick }) {
 
 export default function App() {
   const postData = posts;
+  const [showCreatePost, setshowCreatePost] = useState(false);
+
+  function handelshowCreatePost() {
+    setshowCreatePost((show) => !show);
+  }
+
   return (
     <div>
       <Postlist data={postData} />
 
       <div className="flex  justify-center">
-        <Createpost />
+        <Createpost handelshowCreatePost={handelshowCreatePost} />
       </div>
       <div className="flex justify-center mt-3 h-60">
-        <Postdata />
+        {showCreatePost && <Postdata />}
       </div>
       <Editpost />
     </div>
@@ -99,10 +106,10 @@ function Post({ datas }) {
   );
 }
 
-function Createpost() {
+function Createpost({ handelshowCreatePost }) {
   return (
     <div>
-      <Button>create post</Button>
+      <Button onClick={handelshowCreatePost}>create post</Button>
     </div>
   );
 }
