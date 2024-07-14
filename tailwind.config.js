@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        custom: "650px", // Define your custom width here
+        custom: "650px",
+        imgwdt: "455px",
       },
       colors: {
         peach: "#FFE8CC",

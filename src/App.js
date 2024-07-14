@@ -103,7 +103,7 @@ function Post({ datas }) {
 
           <div>
             <img
-              className="h-64 w-auto rounded-md"
+              className="h-64 w-imgwdt rounded-md"
               src={datas.insertimg}
               alt={datas.content}
             />
