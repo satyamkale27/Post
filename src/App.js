@@ -119,17 +119,42 @@ function Createpost({ handelshowCreatePost, showCreatePost }) {
   );
 }
 function Postdata() {
+  const [name, setName] = useState("");
+  const [content, setContent] = useState("");
+  const [hashtag, setHashtag] = useState("");
+  const [image, setImage] = useState("");
+
   return (
     <div className="w-1/4 border-4 bg-peach">
       <form className="p-6 grid grid-cols-2 mb-6 gap-1 ">
         <label className="font-bold">name</label>
-        <input className="border-2 border-blue-600 w-10/12" type="text" />
+        <input
+          className="border-2 border-blue-600 w-10/12"
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
         <label className="font-bold">content</label>
-        <input className="border-2 border-blue-600 w-10/12" type="text" />
+        <input
+          className="border-2 border-blue-600 w-10/12"
+          type="text"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
         <label className="font-bold">Hashtag</label>
-        <input className="border-2 border-blue-600 w-10/12" type="text" />
+        <input
+          className="border-2 border-blue-600 w-10/12"
+          type="text"
+          value={hashtag}
+          onChange={(e) => setHashtag(e.target.value)}
+        />
         <label className="font-bold">Image</label>
-        <input className="border-2 border-blue-600 w-10/12" type="text" />
+        <input
+          className="border-2 border-blue-600 w-10/12"
+          type="text"
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
+        />
         <div className="mt-4 ml-24">
           <Button>Create</Button>
         </div>
