@@ -43,7 +43,10 @@ export default function App() {
       <Postlist data={postData} />
 
       <div className="flex  justify-center">
-        <Createpost handelshowCreatePost={handelshowCreatePost} />
+        <Createpost
+          handelshowCreatePost={handelshowCreatePost}
+          showCreatePost={showCreatePost}
+        />
       </div>
       <div className="flex justify-center mt-3 h-60">
         {showCreatePost && <Postdata />}
@@ -106,10 +109,12 @@ function Post({ datas }) {
   );
 }
 
-function Createpost({ handelshowCreatePost }) {
+function Createpost({ handelshowCreatePost, showCreatePost }) {
   return (
     <div>
-      <Button onClick={handelshowCreatePost}>create post</Button>
+      <Button onClick={handelshowCreatePost}>
+        {showCreatePost ? "close" : "create post"}
+      </Button>
     </div>
   );
 }
