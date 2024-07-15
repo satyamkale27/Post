@@ -53,6 +53,17 @@ export default function App() {
       postData.filter((postDatass) => postDatass.id !== id)
     );
   }
+  function handelEditPost(contents) {
+    // console.log(`edit function value is ${contents}`);  debug //
+    setpostData((postData) =>
+      postData.map((postDatac) =>
+        postDatac.id === ShowEditPost.id
+          ? { ...postDatac, content: contents }
+          : postDatac
+      )
+    );
+  }
+
   return (
     <div>
       <Postlist
@@ -71,7 +82,9 @@ export default function App() {
       <div className="flex justify-center mt-3 h-60">
         {showCreatePost && <Postdata onNewPost={handelCreatePost} />}
       </div>
-      {ShowEditPost && <Editpost ShowEditPost={ShowEditPost} />}
+      {ShowEditPost && (
+        <Editpost ShowEditPost={ShowEditPost} handelEditPost={handelEditPost} />
+      )}
     </div>
   );
 }
@@ -211,15 +224,25 @@ function Postdata({ onNewPost }) {
     </div>
   );
 }
-function Editpost({ ShowEditPost }) {
+function Editpost({ ShowEditPost, handelEditPost }) {
+  const [edit, setEdit] = useState(ShowEditPost.content);
+  function handelsubmit(e) {
+    e.preventDefault();
+    handelEditPost(edit);
+  }
+
   return (
-    <div className="w-1/4 h-full   absolute top-14 right-2">
+    <div
+      className="w-1/4 h-full   absolute top-14 right-2"
+      onSubmit={handelsubmit}
+    >
       <form className="p-6 grid grid-cols-2 mb-6 gap-1 bg-peach border-4 fixed">
         <label className="font-bold">content</label>
         <input
           className="border-2 border-blue-600 w-40"
           type="text"
-          value={ShowEditPost.content}
+          value={edit}
+          onChange={(e) => setEdit(e.target.value)}
         />
         <div className="mt-4 ml-24">
           <Button>Edit</Button>
