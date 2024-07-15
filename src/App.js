@@ -46,6 +46,7 @@ export default function App() {
   }
   function handelEditPost(contents) {
     // console.log(`edit function value is ${contents}`);  debug //
+    if (!contents) return;
     setpostData((postData) =>
       postData.map((postDatac) =>
         postDatac.id === ShowEditPost.id
@@ -185,21 +186,33 @@ function Postdata({ onNewPost }) {
           className="border-2 border-blue-600 w-10/12"
           type="text"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => {
+            if (e.target.value.length <= 7) {
+              setName(e.target.value);
+            }
+          }}
         />
         <label className="font-bold">content</label>
         <input
           className="border-2 border-blue-600 w-10/12"
           type="text"
           value={content}
-          onChange={(e) => setContent(e.target.value)}
+          onChange={(e) => {
+            if (e.target.value.length <= 42) {
+              setContent(e.target.value);
+            }
+          }}
         />
         <label className="font-bold">Hashtag</label>
         <input
           className="border-2 border-blue-600 w-10/12"
           type="text"
           value={hashtag}
-          onChange={(e) => setHashtag(e.target.value)}
+          onChange={(e) => {
+            if (e.target.value.length <= 20) {
+              setHashtag(e.target.value);
+            }
+          }}
         />
         <label className="font-bold">Image</label>
         <input
@@ -233,7 +246,11 @@ function Editpost({ ShowEditPost, handelEditPost }) {
           className="border-2 border-blue-600 w-40"
           type="text"
           value={edit}
-          onChange={(e) => setEdit(e.target.value)}
+          onChange={(e) => {
+            if (e.target.value.length <= 42) {
+              setEdit(e.target.value);
+            }
+          }}
         />
         <div className="mt-4 ml-24">
           <Button>Edit</Button>
