@@ -32,10 +32,15 @@ function Button({ children, onClick }) {
 
 export default function App() {
   const [showCreatePost, setshowCreatePost] = useState(false);
+  const [ShowEditPost, setShowEditPost] = useState(null);
   const [postData, setpostData] = useState(posts);
 
   function handelshowCreatePost() {
     setshowCreatePost((show) => !show);
+  }
+
+  function handelShowEdit(data) {
+    setShowEditPost((cur) => (cur?.id === data.id ? null : data));
   }
 
   function handelCreatePost(newPost) {
@@ -43,14 +48,19 @@ export default function App() {
     setshowCreatePost(false);
   }
   function handelDeletePost(id) {
-    console.log(`id of post is ${id}`);
+    // console.log(`id of post is ${id}`);  debug //
     setpostData((postData) =>
       postData.filter((postDatass) => postDatass.id !== id)
     );
   }
   return (
     <div>
-      <Postlist data={postData} handelDeletePost={handelDeletePost} />
+      <Postlist
+        data={postData}
+        handelDeletePost={handelDeletePost}
+        handelShowEdit={handelShowEdit}
+        ShowEditPost={ShowEditPost}
+      />
 
       <div className="flex  justify-center">
         <Createpost
@@ -61,11 +71,11 @@ export default function App() {
       <div className="flex justify-center mt-3 h-60">
         {showCreatePost && <Postdata onNewPost={handelCreatePost} />}
       </div>
-      <Editpost />
+      {ShowEditPost && <Editpost />}
     </div>
   );
 }
-function Postlist({ data, handelDeletePost }) {
+function Postlist({ data, handelDeletePost, handelShowEdit, ShowEditPost }) {
   return (
     <div className="">
       {data.map((datas) => (
@@ -73,19 +83,25 @@ function Postlist({ data, handelDeletePost }) {
           key={datas.id}
           datas={datas}
           handelDeletePost={handelDeletePost}
+          handelShowEdit={handelShowEdit}
+          ShowEditPost={ShowEditPost}
         />
       ))}
     </div>
   );
 }
-function Post({ datas, handelDeletePost }) {
+function Post({ datas, handelDeletePost, handelShowEdit, ShowEditPost }) {
+  const IsSelected = ShowEditPost?.id === datas.id;
+
   return (
     <div className="h-full w-custom border-4 border-solid  ml-96 mb-2 bg-peach ">
       <div className="flex justify-end m-1">
         <div className="mr-1">
-          <Button>Edit</Button>
+          <Button onClick={() => handelShowEdit(datas)}>
+            {IsSelected ? "close" : "Edit"}
+          </Button>
         </div>
-        <div className="">
+        <div>
           <Button onClick={() => handelDeletePost(datas.id)}>Delete</Button>
         </div>
       </div>
