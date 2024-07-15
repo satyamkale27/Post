@@ -71,7 +71,7 @@ export default function App() {
       <div className="flex justify-center mt-3 h-60">
         {showCreatePost && <Postdata onNewPost={handelCreatePost} />}
       </div>
-      {ShowEditPost && <Editpost />}
+      {ShowEditPost && <Editpost ShowEditPost={ShowEditPost} />}
     </div>
   );
 }
@@ -211,12 +211,16 @@ function Postdata({ onNewPost }) {
     </div>
   );
 }
-function Editpost() {
+function Editpost({ ShowEditPost }) {
   return (
     <div className="w-1/4 h-full   absolute top-14 right-2">
       <form className="p-6 grid grid-cols-2 mb-6 gap-1 bg-peach border-4 fixed">
         <label className="font-bold">content</label>
-        <input className="border-2 border-blue-600 w-40" type="text" />
+        <input
+          className="border-2 border-blue-600 w-40"
+          type="text"
+          value={ShowEditPost.content}
+        />
         <div className="mt-4 ml-24">
           <Button>Edit</Button>
         </div>
