@@ -188,8 +188,8 @@ function Postdata({ onNewPost }) {
 }
 function Editpost() {
   return (
-    <div className="w-1/4 border-4 bg-peach absolute top-1/2 right-2">
-      <form className="p-6 grid grid-cols-2 mb-6 gap-1 ">
+    <div className="w-1/4 h-full   absolute top-14 right-2">
+      <form className="p-6 grid grid-cols-2 mb-6 gap-1 bg-peach border-4 fixed">
         <label className="font-bold">content</label>
         <input className="border-2 border-blue-600 w-40" type="text" />
         <div className="mt-4 ml-24">
