@@ -44,6 +44,9 @@ export default function App() {
   }
   function handelDeletePost(id) {
     console.log(`id of post is ${id}`);
+    setpostData((postData) =>
+      postData.filter((postDatass) => postDatass.id !== id)
+    );
   }
   return (
     <div>
