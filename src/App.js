@@ -1,7 +1,7 @@
 import { useState } from "react";
 const posts = [
   {
-    id: 134679,
+    id: 174075,
     Image: "resources/profile_Image.jpg",
     name: "satyam",
     content: "The most beautiful sunset I've ever seen.",
@@ -42,10 +42,12 @@ export default function App() {
     setpostData((postData) => [...postData, newPost]);
     setshowCreatePost(false);
   }
-
+  function handelDeletePost(id) {
+    console.log(`id of post is ${id}`);
+  }
   return (
     <div>
-      <Postlist data={postData} />
+      <Postlist data={postData} handelDeletePost={handelDeletePost} />
 
       <div className="flex  justify-center">
         <Createpost
@@ -60,16 +62,20 @@ export default function App() {
     </div>
   );
 }
-function Postlist({ data }) {
+function Postlist({ data, handelDeletePost }) {
   return (
     <div className="">
       {data.map((datas) => (
-        <Post key={datas.id} datas={datas} />
+        <Post
+          key={datas.id}
+          datas={datas}
+          handelDeletePost={handelDeletePost}
+        />
       ))}
     </div>
   );
 }
-function Post({ datas }) {
+function Post({ datas, handelDeletePost }) {
   return (
     <div className="h-full w-custom border-4 border-solid  ml-96 mb-2 bg-peach ">
       <div className="flex justify-end m-1">
@@ -77,7 +83,7 @@ function Post({ datas }) {
           <Button>Edit</Button>
         </div>
         <div className="">
-          <Button>Delete</Button>
+          <Button onClick={() => handelDeletePost(datas.id)}>Delete</Button>
         </div>
       </div>
 
